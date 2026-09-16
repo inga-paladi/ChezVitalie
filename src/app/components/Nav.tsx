@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "@/imports/ChezVitalieLogo.PNG";
+import logo from "@/imports/3.svg";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router";
 import { Button } from "./ui/button";

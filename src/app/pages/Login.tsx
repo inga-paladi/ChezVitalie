@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { ArrowRight, ChevronLeft } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
-import logo from "@/imports/ChezVitalieLogo.PNG";
+import logo from "@/imports/3.svg";
 
 const copy = {
   en: {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "@/imports/ChezVitalieLogo.PNG";
+import logo from "@/imports/3.svg";
 import { NavLink, Outlet, useNavigate } from "react-router";
 import { LayoutDashboard, CalendarDays, FileText, User, LogOut, Menu, X, Globe } from "lucide-react";
 import { useLang } from "../context/LanguageContext";

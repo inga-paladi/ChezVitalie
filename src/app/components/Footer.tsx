@@ -1,4 +1,4 @@
-import logo from "@/imports/ChezVitalieLogo.PNG";
+import logo from "@/imports/3.svg";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
 
