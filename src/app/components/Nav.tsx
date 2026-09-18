@@ -25,6 +25,10 @@ export function Nav() {
     { label: tx.membership, href: "#membership" },
   ];
 
+  // Dynamic text color: Dark text when at top (light hero background), white text when scrolled into dark background
+  const textColor = scrolled ? "text-white" : "text-[#3D0A0F]";
+  const hoverColor = "hover:text-[#CF1028]";
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 sm:px-6 pointer-events-none">
       <div
@@ -36,7 +40,7 @@ export function Nav() {
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center gap-2.5">
             <img src={logo} alt="Chez Vitalie" className="h-9 w-9 rounded-full object-cover flex-shrink-0" />
-            <span className="font-['Cormorant_Garamond'] text-xl font-light italic tracking-wide text-white transition-colors">
+            <span className={`font-['Cormorant_Garamond'] text-xl font-light italic tracking-wide transition-colors ${textColor}`}>
               Chez Vitalie
             </span>
           </a>
@@ -44,7 +48,7 @@ export function Nav() {
           <nav className="hidden md:flex items-center gap-7">
             {links.map((link) => (
               <a key={link.href} href={link.href}
-                className="text-sm tracking-wide transition-colors hover:text-[#CF1028] font-light text-white">
+                className={`text-sm tracking-wide transition-colors font-light ${textColor} ${hoverColor}`}>
                 {link.label}
               </a>
             ))}
@@ -52,11 +56,11 @@ export function Nav() {
 
           <div className="hidden md:flex items-center gap-4">
             <button onClick={() => setLang(lang === "en" ? "ro" : "en")}
-              className="text-xs tracking-widest uppercase font-mono transition-colors hover:text-[#CF1028] text-white">
+              className={`text-xs tracking-widest uppercase font-mono transition-colors ${textColor} ${hoverColor}`}>
               {lang === "en" ? "RO" : "EN"}
             </button>
             <button onClick={() => navigate("/login")}
-              className="text-sm font-light transition-colors hover:text-[#CF1028] text-white">
+              className={`text-sm font-light transition-colors ${textColor} ${hoverColor}`}>
               {tx.login}
             </button>
             <Button size="sm" className="bg-[#CF1028] hover:bg-[#77080E] text-white text-sm px-5 rounded-full transition-colors font-light border-0">
@@ -64,7 +68,7 @@ export function Nav() {
             </Button>
           </div>
 
-          <button onClick={() => setOpen(!open)} className="md:hidden p-2 transition-colors text-white">
+          <button onClick={() => setOpen(!open)} className={`md:hidden p-2 transition-colors ${textColor}`}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
@@ -75,13 +79,13 @@ export function Nav() {
         <div className="absolute top-full left-4 right-4 mt-2 bg-[#120304]/95 backdrop-blur-xl border border-[#77080E]/25 rounded-[1.5rem] px-6 py-6 flex flex-col gap-5 pointer-events-auto shadow-2xl">
           {links.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}
-              className="text-sm text-white/70 tracking-wide hover:text-[#CF1028] transition-colors font-light">
+              className="text-sm text-white/80 tracking-wide hover:text-[#CF1028] transition-colors font-light">
               {link.label}
             </a>
           ))}
           <div className="flex items-center justify-between pt-2 border-t border-[#77080E]/20">
             <button onClick={() => setLang(lang === "en" ? "ro" : "en")}
-              className="text-xs tracking-widest uppercase font-mono text-white/40 hover:text-[#CF1028] transition-colors">
+              className="text-xs tracking-widest uppercase font-mono text-white/60 hover:text-[#CF1028] transition-colors">
               {lang === "en" ? "Română" : "English"}
             </button>
             <Button size="sm" className="bg-[#CF1028] hover:bg-[#77080E] text-white rounded-full font-light">
