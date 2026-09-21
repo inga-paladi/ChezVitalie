@@ -17,7 +17,7 @@ export function Contact() {
   };
 
   return (
-    <section id="membership" className="min-h-screen flex flex-col justify-center py-20 sm:py-28 relative overflow-hidden"
+    <section id="contact" className="min-h-screen flex flex-col justify-center py-20 sm:py-28 relative overflow-hidden"
       style={{ backgroundImage: `url('${SILK}')`, backgroundSize: "cover", backgroundPosition: "center" }}>
       <div className="absolute inset-0 bg-[#3D0A0F]/55" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
@@ -27,15 +27,13 @@ export function Contact() {
             <h2 className="font-['Cormorant_Garamond'] font-light text-white/90 mb-6">
               {tx.headline1}<br /><em>{tx.headline2}</em>
             </h2>
-            <p className="text-white/50 text-sm leading-relaxed font-light mb-12 max-w-sm">{tx.body}</p>
-            <div className="space-y-7">
-              {tx.tiers.map((item) => (
-                <div key={item.label} className="flex items-start gap-4 group cursor-pointer">
-                  <div className="w-4 h-px bg-white/50 mt-2.5 flex-shrink-0 group-hover:w-8 transition-all duration-300" />
-                  <div>
-                    <p className="text-white/80 text-sm font-light">{item.label}</p>
-                    <p className="text-white/35 text-xs mt-0.5 font-light">{item.detail}</p>
-                  </div>
+            <p className="text-white/50 text-sm leading-relaxed font-light mb-10 max-w-sm">{tx.body}</p>
+
+            <div className="space-y-5">
+              {tx.details.map((d) => (
+                <div key={d.label} className="flex items-start gap-4">
+                  <span className="text-white/30 text-[10px] tracking-[0.2em] uppercase font-light w-20 flex-shrink-0 mt-0.5">{d.label}</span>
+                  <span className="text-white/70 text-sm font-light">{d.value}</span>
                 </div>
               ))}
             </div>
@@ -56,29 +54,34 @@ export function Contact() {
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-[#77080E]/70 text-xs uppercase tracking-[0.2em] block mb-2 font-light">{tx.form.firstName}</label>
-                      <input required type="text" className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 placeholder-[#77080E]/20 focus:outline-none focus:border-[#77080E]/50 transition-colors" />
+                      <input required type="text" className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 focus:outline-none focus:border-[#77080E]/50 transition-colors" />
                     </div>
                     <div>
                       <label className="text-[#77080E]/70 text-xs uppercase tracking-[0.2em] block mb-2 font-light">{tx.form.lastName}</label>
-                      <input required type="text" className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 placeholder-[#77080E]/20 focus:outline-none focus:border-[#77080E]/50 transition-colors" />
+                      <input required type="text" className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 focus:outline-none focus:border-[#77080E]/50 transition-colors" />
                     </div>
                   </div>
                   <div>
                     <label className="text-[#77080E]/70 text-xs uppercase tracking-[0.2em] block mb-2 font-light">{tx.form.email}</label>
-                    <input required type="email" className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 placeholder-[#77080E]/20 focus:outline-none focus:border-[#77080E]/50 transition-colors" />
+                    <input required type="email" className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 focus:outline-none focus:border-[#77080E]/50 transition-colors" />
+                  </div>
+                  <div>
+                    <label className="text-[#77080E]/70 text-xs uppercase tracking-[0.2em] block mb-2 font-light">{tx.form.phone}</label>
+                    <input type="tel" className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 focus:outline-none focus:border-[#77080E]/50 transition-colors" />
                   </div>
                   <div>
                     <label className="text-[#77080E]/70 text-xs uppercase tracking-[0.2em] block mb-2 font-light">{tx.form.interest}</label>
                     <select className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F]/70 text-sm px-4 py-3.5 focus:outline-none focus:border-[#77080E]/50 transition-colors appearance-none">
                       <option value="">{tx.form.interestPlaceholder}</option>
-                      {tx.tiers.map((tier) => <option key={tier.label}>{tier.label}</option>)}
+                      {t[lang].services.items.map((s) => <option key={s.title}>{s.title}</option>)}
+                      {t[lang].pricing.plans.map((p) => <option key={p.name}>{p.name}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className="text-[#77080E]/70 text-xs uppercase tracking-[0.2em] block mb-2 font-light">{tx.form.message}</label>
-                    <textarea rows={3} className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 placeholder-[#77080E]/20 focus:outline-none focus:border-[#77080E]/50 transition-colors resize-none" placeholder={tx.form.messagePlaceholder} />
+                    <textarea rows={3} className="w-full bg-[#FFF5F5] border border-[#77080E]/15 rounded-2xl text-[#3D0A0F] text-sm px-4 py-3.5 focus:outline-none focus:border-[#77080E]/50 transition-colors resize-none" placeholder={tx.form.messagePlaceholder} />
                   </div>
-                  <Button type="submit" className="w-full bg-[#77080E] hover:bg-[#CF1028] text-white border-0 py-3.5 text-sm rounded-full font-light tracking-widest uppercase transition-all">
+                  <Button type="submit" className="w-full bg-[#77080E] hover:bg-[#CF1028] text-white border-0 py-3.5 text-xs rounded-full font-light tracking-widest uppercase transition-all">
                     {tx.form.submit}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

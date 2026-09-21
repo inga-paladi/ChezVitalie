@@ -1,6 +1,8 @@
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
 
+const SILK = "https://images.unsplash.com/photo-1628973434123-3e956f203dd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920";
+
 const images = [
   "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80&auto=format&fit=crop&crop=face",
   "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop&crop=face",
@@ -12,26 +14,36 @@ export function Team() {
   const tx = t[lang].team;
 
   return (
-    <section id="team" className="py-16 sm:py-24 bg-[#F6F0E6]">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="mb-12 sm:mb-16">
-          <p className="text-[#C41230] text-xs tracking-[0.25em] uppercase mb-4">{tx.eyebrow}</p>
-          <h2 className="font-['Cormorant_Garamond'] font-light text-[#231C0D] max-w-lg text-3xl sm:text-4xl lg:text-5xl">
+    <section id="team" className="min-h-screen flex flex-col justify-center py-20 sm:py-28 relative overflow-hidden"
+      style={{ backgroundImage: `url('${SILK}')`, backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="absolute inset-0 bg-[#3D0A0F]/55" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+        <div className="mb-14 sm:mb-20">
+          <p className="text-white/60 text-xs tracking-[0.35em] uppercase mb-5 font-light">{tx.eyebrow}</p>
+          <h2 className="font-['Cormorant_Garamond'] font-light text-white/90">
             {tx.headline}
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+
+        <div className="grid sm:grid-cols-3 gap-5 sm:gap-6">
           {tx.members.map((member, i) => (
-            <div key={member.name} className="group">
-              <div className="relative overflow-hidden mb-5 sm:mb-6 rounded-2xl aspect-[4/5]">
-                <img src={images[i]} alt={member.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E190D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+            <div key={member.name} className="bg-white rounded-[2rem] overflow-hidden border border-[#77080E]/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={images[i]}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3D0A0F]/30 to-transparent" />
               </div>
-              <p className="text-[#C41230] text-xs tracking-[0.15em] uppercase mb-1">{member.role}</p>
-              <h3 className="font-['Cormorant_Garamond'] text-[#231C0D] text-xl font-medium mb-1">{member.name}</h3>
-              <p className="text-[#7A6B56] text-xs mb-3">{member.credentials}</p>
-              <p className="text-[#7A6B56] text-sm leading-relaxed font-light">{member.bio}</p>
+              <div className="p-7">
+                <p className="text-[#CF1028] text-[10px] tracking-[0.2em] uppercase mb-2 font-light">{member.role}</p>
+                <h3 className="font-['Cormorant_Garamond'] text-[#77080E] text-xl font-light italic mb-1">{member.name}</h3>
+                <p className="text-[#5C1A20]/50 text-xs mb-4 font-light">{member.credentials}</p>
+                <div className="w-8 h-px bg-[#77080E]/25 mb-4" />
+                <p className="text-[#5C1A20] text-sm leading-relaxed font-light">{member.bio}</p>
+              </div>
             </div>
           ))}
         </div>

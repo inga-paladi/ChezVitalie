@@ -18,12 +18,10 @@ export function Differentiators() {
             <p className="text-[#77080E]/60 text-xs tracking-[0.35em] uppercase mb-4 font-light">{tx.eyebrow}</p>
             <h2 className="font-['Cormorant_Garamond'] font-light text-[#77080E]"
               style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}>
-              {tx.eyebrow && tx.eyebrow.split(" ")[0]}
+              {tx.headline}
             </h2>
           </div>
-          <span className="self-start sm:self-end bg-[#FFF5F5] border border-[#77080E]/15 text-[#77080E]/70 text-[10px] tracking-[0.2em] uppercase px-4 py-2 rounded-full font-light">
-            Est. 2024 · Bucharest
-          </span>
+          <p className="text-[#5C1A20]/45 text-sm leading-relaxed max-w-xs sm:text-right font-light">{tx.sub}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
