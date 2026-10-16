@@ -1,5 +1,5 @@
 import logo from "../../imports/3.svg";
-import footerBackground from "../../imports/background6.svg";
+import footerBackground from "../../imports/background6.webp";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
 

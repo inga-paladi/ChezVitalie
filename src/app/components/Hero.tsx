@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import heroBackground from "../../imports/background1.svg";
+import heroBackground from "../../imports/background1.png";
 
 export function Hero() {
   const { lang } = useLang();

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import pricingBackground from "../../imports/background7.svg";
+import pricingBackground from "../../imports/background7.webp";
 
 export function Pricing() {
   const { lang } = useLang();

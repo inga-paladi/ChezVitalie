@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import contactBackground from "../../imports/background1.svg";
+import contactBackground from "../../imports/background1.png";
 
 export function Contact() {
   const { lang } = useLang();

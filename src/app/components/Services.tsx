@@ -1,6 +1,6 @@
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import servicesBackground from "../../imports/background9.svg";
+import servicesBackground from "../../imports/background9.webp";
 
 export function Services() {
   const { lang } = useLang();

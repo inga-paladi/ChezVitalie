@@ -1,6 +1,6 @@
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import partnersBackground from "../../imports/background5.svg";
+import partnersBackground from "../../imports/background5.webp";
 
 const partners = [
   {

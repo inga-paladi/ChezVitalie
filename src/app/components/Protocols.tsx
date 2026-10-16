@@ -1,6 +1,6 @@
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import ritualsBackground from "../../imports/background6.svg";
+import ritualsBackground from "../../imports/background6.webp";
 
 export function Rituals() {
   const { lang } = useLang();

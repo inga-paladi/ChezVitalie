@@ -1,4 +1,4 @@
-import testimonialsBackground from "../../imports/background4.svg";
+import testimonialsBackground from "../../imports/background4.webp";
 
 const testimonials = [
   {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import faqBackground from "../../imports/background5.svg";
+import faqBackground from "../../imports/background5.webp";
 
 export function FAQ() {
   const { lang } = useLang();

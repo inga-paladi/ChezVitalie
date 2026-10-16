@@ -1,6 +1,6 @@
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
-import aboutBackground from "../../imports/background4.svg";
+import aboutBackground from "../../imports/background4.webp";
 
 export function Differentiators() {
   const { lang } = useLang();
