@@ -1,6 +1,5 @@
 import { Nav } from "../components/Nav";
 import { Hero } from "../components/Hero";
-import { Stats } from "../components/Stats";
 import { Differentiators } from "../components/Differentiators";
 import { Services } from "../components/Services";
 import { Rituals } from "../components/Protocols";
@@ -18,7 +17,6 @@ export function MarketingSite() {
       <div className="min-h-screen bg-[#FFF8F3]">
         <Nav />
         <Hero />
-        <Stats />
         <Differentiators />
         <Services />
         <Rituals />

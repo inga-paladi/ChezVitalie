@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import logo from "@/imports/3.svg";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router";
 import { Button } from "./ui/button";
@@ -31,25 +30,22 @@ export function Nav() {
   return (
     <>
       {/* Announcement bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#77080E] text-white/80 text-[10px] tracking-[0.3em] uppercase text-center py-2 font-light">
-        {tx.announcement}
-      </div>
+
 
       <header className="fixed top-7 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pt-3 pointer-events-none">
-        <div className={`w-full max-w-6xl pointer-events-auto transition-all duration-500 ${
+        <div className={`w-full max-w-5xl pointer-events-auto transition-all duration-500 ${
           scrolled
             ? "bg-[#120304]/92 backdrop-blur-xl border border-[#77080E]/25 shadow-2xl rounded-full px-6 py-3"
-            : "bg-transparent px-2 py-2"
+            : "bg-transparent px-0 py-2"
         }`}>
-          <div className="flex items-center justify-between">
-            <a href="#" className="flex items-center gap-2.5">
-              <img src={logo} alt="Chez Vitalie" className="h-8 w-8 rounded-full object-cover flex-shrink-0" />
-              <span className={`font-['Cormorant_Garamond'] text-xl font-light italic tracking-wide transition-colors ${scrolled ? "text-white" : "text-[#3D0A0F]"}`}>
-                Chez Vitalie
-              </span>
-            </a>
+          {/* Strict 3-column grid layout: [Left Spacer] [Centered Nav Links] [Right Edge Group] */}
+          <div className="relative hidden lg:grid grid-cols-[1fr_auto_1fr] items-center min-h-10 w-full">
+            
+            {/* Left Column (Empty Spacer) */}
+            <div />
 
-            <nav className="hidden lg:flex items-center gap-6">
+            {/* Middle Column: Nav links perfectly centered */}
+            <nav className="flex items-center justify-center gap-6">
               {links.map((link) => (
                 <a key={link.href} href={link.href}
                   className={`text-xs tracking-wide transition-colors hover:text-[#CF1028] font-light ${scrolled ? "text-white/80" : "text-[#5C1A20]/80"}`}>
@@ -58,7 +54,8 @@ export function Nav() {
               ))}
             </nav>
 
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Right Column: RO, My Account, and CTA button pushed all the way to the right */}
+            <div className="flex items-center justify-end gap-5 w-full">
               <button onClick={() => setLang(lang === "en" ? "ro" : "en")}
                 className={`text-xs tracking-widest uppercase font-mono transition-colors hover:text-[#CF1028] ${scrolled ? "text-white/60" : "text-[#5C1A20]/60"}`}>
                 {lang === "en" ? "RO" : "EN"}
@@ -72,8 +69,12 @@ export function Nav() {
               </Button>
             </div>
 
+          </div>
+
+          {/* Mobile header row */}
+          <div className="flex lg:hidden items-center justify-between min-h-10 px-4">
             <button onClick={() => setOpen(!open)}
-              className={`lg:hidden p-2 transition-colors ${scrolled ? "text-white" : "text-[#3D0A0F]"}`}>
+              className={`p-2 transition-colors ml-auto ${scrolled ? "text-white" : "text-[#3D0A0F]"}`}>
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
