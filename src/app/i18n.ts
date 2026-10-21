@@ -18,8 +18,9 @@ export const t = {
     },
     hero: {
       tagline: "Add life to your years.",
-      body: "Discover noninvasive therapies designed to support your wellbeing, in a calm, welcoming space where every visit becomes a moment for yourself.",      cta1: "Book a Visit",
-      cta2: "Discover Therapies",
+      body: "A house of energy, not a clinic.",      
+      cta1: "Book a Visit",
+      cta2: "Explore our therapies",
       est: "București",
     },
     differentiators: {

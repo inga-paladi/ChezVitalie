@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../i18n";
 import heroBackground from "../../imports/background1.png";
@@ -15,10 +15,9 @@ export function Hero() {
     setPhase(0);
 
     const steps = [
-      setTimeout(() => setPhase(2), 1000),
-      setTimeout(() => setPhase(4), 2800),
-      setTimeout(() => setPhase(5), 3800),
-      setTimeout(() => setPhase(6), 4600),
+      setTimeout(() => setPhase(1), 500),
+      setTimeout(() => setPhase(2), 1100),
+      setTimeout(() => setPhase(3), 1700),
     ];
 
     return () => steps.forEach(clearTimeout);
@@ -26,134 +25,79 @@ export function Hero() {
 
   const reveal = (show: boolean, delay = "0ms") => ({
     opacity: show ? 1 : 0,
-    transform: show
-      ? "translateY(0) scale(1)"
-      : "translateY(18px) scale(0.98)",
+    transform: show ? "translateY(0)" : "translateY(16px)",
     transition: `
-      opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay},
-      transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) ${delay}
+      opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${delay},
+      transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${delay}
     `,
   });
+
+  const scrollToTherapies = () => {
+    const section =
+      document.getElementById("services") ??
+      document.getElementById("therapies");
+
+    section?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section
       id="hero"
-      className="relative isolate min-h-screen flex items-center justify-center overflow-hidden bg-[#FFF8F3]"
+      className="relative isolate min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#FFF8F3]"
       style={{
         backgroundImage: `url("${heroBackground}")`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}
     >
       {/* Main content */}
-      <div
-        className="relative z-10 w-full text-center px-6 sm:px-12 py-40"
-        style={{
-          background: "transparent",
-          boxShadow: "none",
-        }}
-      >
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-16 py-36 sm:py-40 text-center">
         <h1
-          className="hero-text font-['Cormorant_Garamond'] font-medium italic text-[#3D0A0F] leading-none mb-3"
+          className="hero-text font-['Cormorant_Garamond'] font-medium italic text-[#3D0A0F] leading-[0.95]"
           style={{
-            fontSize: "clamp(4rem, 8vw, 10rem)",
-            letterSpacing: "-0.02em",
-            ...reveal(phase >= 2),
+            fontSize: "clamp(4.25rem, 8.5vw, 9rem)",
+            letterSpacing: "-0.035em",
+            ...reveal(phase >= 1),
           }}
         >
           Chez Vitalie
         </h1>
 
-        {/* Animated divider */}
-        <div
-          aria-hidden="true"
-          className="mx-auto mb-8"
-          style={{
-            height: "1px",
-            background:
-              "linear-gradient(90deg, transparent, #77080E, transparent)",
-            width: phase >= 4 ? "120px" : "0px",
-            opacity: phase >= 4 ? 1 : 0,
-            transition:
-              "width 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease",
-          }}
-        />
-
-        {/* Description */}
         <p
-          className="hero-text text-[#5C1A20]/80 text-sm sm:text-base leading-relaxed font-light max-w-md mx-auto mb-12"
-          style={reveal(phase >= 5)}
+          className="hero-text max-w-xl mx-auto mt-7 sm:mt-9 text-base sm:text-lg lg:text-xl leading-relaxed font-light text-[#5C1A20]/80"
+          style={reveal(phase >= 2)}
         >
           {tx.body}
         </p>
 
-        {/* Buttons */}
+        {/* Single primary action */}
         <div
-          className="flex flex-col sm:flex-row gap-3 justify-center"
-          style={{
-            ...reveal(phase >= 6),
-            background: "transparent",
-          }}
+          className="mt-9 sm:mt-11 flex justify-center"
+          style={reveal(phase >= 3)}
         >
           <Button
             size="lg"
-            className="bg-[#77080E] hover:bg-[#CF1028] text-white border-0 px-9 py-4 text-sm tracking-widest rounded-full font-light uppercase transition-all shadow-lg shadow-[#77080E]/20"
-          >
-            {tx.cta1}
-            <ArrowRight className="ml-2.5 h-3.5 w-3.5" />
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-[#77080E]/25 text-[#77080E] hover:bg-[#77080E]/10 px-9 py-4 text-sm tracking-widest bg-transparent rounded-full font-light uppercase"
+            onClick={scrollToTherapies}
+            className="min-h-14 rounded-full bg-[#77080E] hover:bg-[#5C070C] text-white border border-transparent px-8 sm:px-10 py-4 text-xs sm:text-sm tracking-[0.12em] font-normal uppercase transition-colors duration-300 shadow-none"
           >
             {tx.cta2}
+            <ArrowRight className="ml-3 h-4 w-4" />
           </Button>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        aria-hidden="true"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         style={{
-          background: "transparent",
-          opacity: phase >= 6 ? 0.5 : 0,
-          transition: "opacity 1.6s ease 0.4s",
+          opacity: phase >= 3 ? 0.55 : 0,
+          transition: "opacity 1.2s ease 0.4s",
         }}
       >
-        <p className="hero-text text-[#77080E]/70 text-[9px] tracking-[0.45em] uppercase font-light">
-          {tx.est}
-        </p>
-
-        <div className="w-px h-8 bg-gradient-to-b from-[#77080E]/40 to-transparent" />
-
-        <ArrowDown
-          className="w-3.5 h-3.5 text-[#77080E]/50"
-          style={{
-            animation:
-              phase >= 6 ? "floatDown 2.5s ease-in-out infinite" : "none",
-          }}
-        />
+        <div className="h-10 w-px bg-gradient-to-b from-[#77080E]/60 to-transparent" />
       </div>
-
-      <style>{`
-        #hero .hero-text {
-          background: transparent !important;
-          box-shadow: none !important;
-        }
-
-        @keyframes floatDown {
-          0%, 100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(5px);
-          }
-        }
-      `}</style>
     </section>
   );
 }
